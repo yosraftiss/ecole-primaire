@@ -1,0 +1,280 @@
+/* ==========================================================
+   Feuille de style de l'application.
+   Style clair : fond crème, pêche et orange ; titres en Anton ; texte en Inter.
+   Couleurs définies une seule fois (variables CSS) pour rester cohérent.
+   ========================================================== */
+
+/* Tailwind (utilisé par le héro) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --texte: #1f1a17;
+  --texte-doux: #6b5d52;
+  --fond: #fbf7f2;
+  --carte: #ffffff;
+  --peche: #fde3d6;
+  --peche-claire: #fff3ec;
+  --orange: #f4845f;
+  --orange-fonce: #e8704a;
+  --bordure: #eadfd3;
+  --bordure-forte: #d9c7b8;
+  --lien: #b5461f;
+  --accent: #2e7d3e;
+  --accent-clair: #dff3e3;
+  --alerte: #9a4a00;
+  --alerte-clair: #ffe9c7;
+  --danger: #b3261e;
+  --danger-clair: #fbe9e7;
+  --vert: #bfe6c6;
+  --rayon: 16px;
+  --ombre: 0 2px 10px rgba(60, 40, 20, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--texte);
+  background: var(--fond);
+}
+
+h1, h2 {
+  font-family: "Anton", "Impact", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--texte);
+}
+h1 { font-size: 2.2rem; margin: 0 0 0.25rem; line-height: 1.1; }
+h2 { font-size: 1.4rem; margin: 0 0 0.75rem; line-height: 1.2; }
+h3 { font-size: 1rem; font-weight: 700; margin: 0 0 0.5rem; }
+p { margin: 0 0 0.75rem; }
+small, .doux { color: var(--texte-doux); font-size: 0.85rem; }
+
+a { color: var(--lien); font-weight: 600; }
+
+/* ---------- Mise en page ---------- */
+.app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+.menu {
+  background: var(--peche);
+  color: var(--texte);
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-right: 1px solid var(--bordure-forte);
+}
+.menu .marque {
+  font-family: "Anton", "Impact", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.5rem;
+  padding: 4px 10px 22px;
+  color: var(--texte);
+}
+.menu a {
+  color: #5a4a3f;
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 999px;
+  display: block;
+  font-weight: 500;
+}
+.menu a:hover { background: rgba(244, 132, 95, 0.22); color: var(--texte); }
+.menu a.actif { background: var(--orange); color: var(--texte); font-weight: 700; }
+.menu .pied { margin-top: auto; padding: 12px 10px; font-size: 0.85rem; color: var(--texte-doux); }
+.menu .pied small { color: var(--texte-doux); }
+
+.contenu { padding: 28px 32px; max-width: 1200px; width: 100%; }
+.entete-page { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+
+/* ---------- Cartes et grilles ---------- */
+.carte {
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+  padding: 20px 22px;
+  margin-bottom: 26px;
+}
+.grille { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.grille-2 { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; }
+
+.indicateur .valeur { font-family: "Anton", "Impact", sans-serif; font-size: 2rem; color: var(--texte); line-height: 1.1; }
+.indicateur .libelle { color: var(--texte-doux); font-size: 0.9rem; }
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--texte);
+  border: 2px solid var(--orange);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+.bouton:hover { background: var(--orange-fonce); border-color: var(--orange-fonce); }
+.bouton.secondaire { background: #ffffff; color: var(--texte); border-color: var(--bordure-forte); }
+.bouton.secondaire:hover { background: var(--peche); border-color: var(--bordure-forte); }
+.bouton.succes { background: var(--vert); border-color: var(--vert); color: #1e5e2c; }
+.bouton.succes:hover { background: #a9dcb4; border-color: #a9dcb4; }
+.bouton.danger { background: #f6c9c2; border-color: #f6c9c2; color: #8f1d17; }
+.bouton.danger:hover { background: #efb1a7; border-color: #efb1a7; }
+.bouton.petit { padding: 5px 12px; font-size: 0.85rem; }
+.bouton:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Formulaires ---------- */
+.champ { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.champ label { font-weight: 700; font-size: 0.9rem; }
+.champ .aide { color: var(--texte-doux); font-size: 0.8rem; }
+input, select, textarea {
+  font: inherit;
+  padding: 9px 12px;
+  border: 1.5px solid var(--bordure-forte);
+  border-radius: 12px;
+  background: #ffffff;
+  color: var(--texte);
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus { outline: 3px solid var(--orange); outline-offset: 1px; }
+textarea { min-height: 110px; resize: vertical; }
+.ligne-form { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); align-items: end; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+input[type="number"].note { width: 110px; text-align: center; font-weight: 700; }
+
+/* ---------- Tableaux ---------- */
+.tableau-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--bordure); vertical-align: middle; }
+th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--texte);
+  background: var(--peche);
+}
+tr:hover td { background: var(--peche-claire); }
+td.droite, th.droite { text-align: right; }
+
+/* ---------- Étiquettes d'état ---------- */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #f3ece4;
+  color: var(--texte);
+  border: 1px solid var(--bordure-forte);
+}
+.badge.vert { background: var(--accent-clair); color: #1e5e2c; border-color: #bfe0c7; }
+.badge.orange { background: var(--alerte-clair); color: #7a3a00; border-color: #f0cf8f; }
+.badge.rouge { background: var(--danger-clair); color: var(--danger); border-color: #f2c4bf; }
+.badge.bleu { background: var(--peche); color: #7a2c0c; border-color: #f9cdb9; }
+
+/* ---------- Messages d'information ---------- */
+.alerte { padding: 12px 14px; border-radius: 12px; margin-bottom: 16px; border: 1px solid transparent; }
+.alerte.erreur { background: var(--danger-clair); color: var(--danger); border-color: #f2c4bf; }
+.alerte.info { background: #e3f0ff; color: #0f3b66; border-color: #b9d8f5; }
+.alerte.succes { background: var(--accent-clair); color: var(--accent); border-color: #bfe0c7; }
+.alerte.attention { background: var(--alerte-clair); color: #6b3d00; border-color: #f0cf8f; }
+
+.vide { text-align: center; color: var(--texte-doux); padding: 30px 10px; }
+
+/* ---------- Onglets ---------- */
+.onglets { display: flex; gap: 6px; border-bottom: 2px solid var(--bordure-forte); margin-bottom: 18px; flex-wrap: wrap; }
+.onglets button {
+  background: none; border: none; padding: 10px 14px; font: inherit; cursor: pointer;
+  color: var(--texte-doux); border-bottom: 3px solid transparent; margin-bottom: -2px;
+}
+.onglets button.actif { color: var(--texte); border-bottom-color: var(--orange); font-weight: 700; }
+
+/* ---------- Connexion (panneau par-dessus le héro) ---------- */
+.page-connexion { position: relative; min-height: 100vh; overflow: hidden; background: var(--orange); }
+.boite-connexion {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: min(420px, 100%);
+  overflow-y: auto;
+  background: #ffffff;
+  border-left: 1px solid var(--bordure);
+  box-shadow: -8px 0 24px rgba(60, 40, 20, 0.12);
+  padding: 56px 36px 36px;
+  z-index: 100;
+  animation: glisser-panneau 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes glisser-panneau {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+.fermer-connexion {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--bordure-forte);
+  background: #ffffff;
+  color: var(--texte);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.fermer-connexion:hover { background: var(--peche); }
+.boite-connexion .logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--orange);
+  color: var(--texte);
+  display: grid;
+  place-items: center;
+  font-family: "Anton", "Impact", sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+/* ---------- Emploi du temps ---------- */
+.jour { font-family: "Anton", "Impact", sans-serif; text-transform: uppercase; letter-spacing: 0.02em; color: var(--texte); margin: 14px 0 6px; font-size: 1.1rem; }
+.creneau { border-left: 4px solid var(--orange); background: var(--peche-claire); padding: 8px 12px; border-radius: 8px; margin-bottom: 8px; border-top: 1px solid #f3d9c9; border-right: 1px solid #f3d9c9; border-bottom: 1px solid #f3d9c9; }
+.creneau strong { color: var(--texte); }
+
+/* ---------- Figurines du héro : léger mouvement continu ---------- */
+.figurine-flottante {
+  animation: flotter 4.5s ease-in-out infinite;
+  transform-origin: 50% 100%;
+}
+@keyframes flotter {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(0.8deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .figurine-flottante { animation: none; }
+}
+
+/* ---------- Téléphone ---------- */
+@media (max-width: 800px) {
+  .app { grid-template-columns: 1fr; }
+  .menu { flex-direction: row; flex-wrap: wrap; padding: 10px; gap: 2px; border-right: none; border-bottom: 1px solid var(--bordure-forte); }
+  .menu .marque { width: 100%; padding: 4px 6px 10px; font-size: 1.25rem; }
+  .menu .pied { display: none; }
+  .menu a { padding: 7px 11px; font-size: 0.9rem; }
+  .contenu { padding: 18px 16px; }
+  .grille-2 { grid-template-columns: 1fr; }
+  h1 { font-size: 1.7rem; }
+  .boite-connexion { padding: 56px 22px 24px; }
+}

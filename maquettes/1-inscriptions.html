@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maquettes — 1. Inscriptions</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="maquette.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="haut-maquette">
+    <div class="titre">Parcours 1 — Inscriptions</div>
+    <nav><a href="index.html">← Sommaire</a></nav>
+  </header>
+
+  <main class="page-maquette">
+    <span class="etiquette-maquette">Maquette non fonctionnelle</span>
+    <h1>Inscription d'un élève</h1>
+    <p>Un parent demande l'inscription de son enfant. Le secrétariat choisit la classe, puis valide ou refuse la demande.
+       Le parcours passe par trois états : <em>demande envoyée</em>, <em>validée</em>, <em>classe complète</em>.</p>
+
+    <div class="regles">
+      <strong>Règles à respecter</strong>
+      <ul>
+        <li>Une seule inscription par élève et par année scolaire (2026-2027).</li>
+        <li>Un parent ne voit et ne demande que pour ses propres enfants.</li>
+        <li>La validation n'est possible que si la classe a encore une place libre. Sinon, le système refuse.</li>
+        <li>Une fois validée, l'inscription déclenche la création des frais de l'élève (niveau de la classe).</li>
+      </ul>
+    </div>
+
+    <!-- ÉCRAN 1.1 -->
+    <h2>Écran 1.1 — Le parent demande l'inscription</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / inscriptions</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#" class="actif">Inscriptions</a>
+          <a href="#">Emploi du temps</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Paiements</a><a href="#">Messagerie</a>
+          <div class="pied">Nabil Salah<br /><small>Parent</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page"><div><h1>Inscriptions</h1><p class="doux">Année scolaire 2026-2027</p></div></div>
+          <div class="carte">
+            <h2>Demander l'inscription de mon enfant</h2>
+            <div class="entete-page" style="margin-bottom:0"><span>Salah Sana (M002)</span><button class="bouton">Envoyer la demande</button></div>
+          </div>
+          <div class="carte tableau-wrap">
+            <table>
+              <thead><tr><th>Élève</th><th>Demande du</th><th>Statut</th><th>Classe</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Salah Youssef</strong><br /><small>M001</small></td><td>10 sept. 2026</td><td><span class="badge vert">Validée</span></td><td>CP A</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Liste des enfants <strong>sans inscription</strong> cette année. Un enfant déjà inscrit n'apparaît plus ici.<small>Règle : un parent ne voit que ses enfants.</small></div></li>
+      <li><span class="repere">2</span><div>Bouton « Envoyer la demande » : crée une demande en attente, visible par le secrétariat.<small>Une seule inscription par élève et par année.</small></div></li>
+      <li><span class="repere">3</span><div>Suivi : le parent voit l'état de l'inscription de chacun de ses enfants (validée, en attente, refusée), sans pouvoir le modifier.</div></li>
+    </ol>
+
+    <!-- ÉCRAN 1.2 -->
+    <h2>Écran 1.2 — Le secrétariat valide la demande</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / inscriptions</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#" class="actif">Inscriptions</a><a href="#">Classes et matières</a>
+          <a href="#">Emploi du temps</a><a href="#">Notes et bulletins</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Paiements</a><a href="#">Messagerie</a>
+          <div class="pied">Amel Jebali<br /><small>Secrétariat</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page">
+            <div><h1>Inscriptions</h1><p class="doux">Année scolaire 2026-2027</p></div>
+            <div class="champ" style="min-width:220px"><label>Afficher</label><select><option>En attente</option></select></div>
+          </div>
+          <div class="alerte succes">Inscription validée.</div>
+          <div class="carte tableau-wrap">
+            <table>
+              <thead><tr><th>Élève</th><th>Demande du</th><th>Statut</th><th class="droite">Décision</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Salah Sana</strong><br /><small>M002</small></td>
+                  <td>20 oct. 2026</td>
+                  <td><span class="badge orange">En attente</span></td>
+                  <td class="droite">
+                    <div class="actions" style="justify-content:flex-end">
+                      <select style="width:auto"><option>Choisir une classe…</option><option>CP A (24/25)</option><option>CP B (12/25)</option></select>
+                      <button class="bouton succes petit">Valider</button>
+                      <button class="bouton danger petit">Refuser</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Filtre par statut : le secrétariat traite d'abord les demandes « En attente ».</div></li>
+      <li><span class="repere">2</span><div>Liste des classes avec le nombre d'élèves déjà validés (ex. 24/25). Les classes complètes sont grisées.<small>Le choix d'une classe est obligatoire avant « Valider ».</small></div></li>
+      <li><span class="repere">3</span><div>« Valider » enregistre la classe, la date et la personne qui valide. « Refuser » ferme la demande.</div></li>
+    </ol>
+
+    <!-- ÉCRAN 1.3 -->
+    <h2>Écran 1.3 — Cas d'erreur : classe complète</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / inscriptions</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#" class="actif">Inscriptions</a><a href="#">Classes et matières</a>
+          <a href="#">Emploi du temps</a><a href="#">Notes et bulletins</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Paiements</a><a href="#">Messagerie</a>
+          <div class="pied">Amel Jebali<br /><small>Secrétariat</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page"><div><h1>Inscriptions</h1><p class="doux">Année scolaire 2026-2027</p></div></div>
+          <div class="zone-erreur">
+            <div class="alerte erreur">Classe complète : choisissez une autre classe.</div>
+          </div>
+          <div class="carte tableau-wrap">
+            <table>
+              <thead><tr><th>Élève</th><th>Statut</th><th class="droite">Décision</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Salah Sana</strong><br /><small>M002</small></td>
+                  <td><span class="badge orange">En attente</span></td>
+                  <td class="droite">
+                    <div class="actions" style="justify-content:flex-end">
+                      <select style="width:auto"><option>CP A (25/25)</option></select>
+                      <button class="bouton succes petit">Valider</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Message clair qui indique la solution (choisir une autre classe).<small>La base de données empêche le dépassement : le message vient du serveur.</small></div></li>
+      <li><span class="repere">2</span><div>Classe complète : elle reste visible mais ne peut plus être choisie (25/25).</div></li>
+    </ol>
+  </main>
+</body>
+</html>

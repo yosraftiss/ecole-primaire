@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maquettes — Gestion d'école primaire</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="maquette.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="haut-maquette">
+    <div class="titre">Maquettes — Gestion d'école primaire</div>
+    <nav>
+      <a href="index.html">Sommaire</a>
+    </nav>
+  </header>
+
+  <main class="page-maquette">
+    <span class="etiquette-maquette">Maquettes de conception — non fonctionnelles</span>
+    <h1>Maquettes des parcours essentiels</h1>
+    <p>
+      Ces pages montrent à quoi ressemblera l'application avant de la coder. Elles couvrent les quatre parcours
+      jugés critiques dans le cahier des charges : <strong>inscription</strong>, <strong>saisie des notes</strong>,
+      <strong>paiement</strong> et <strong>messagerie</strong>. Les mêmes couleurs, polices et composants sont
+      utilisés dans l'application réelle (fichier <code>styles.css</code> partagé).
+    </p>
+
+    <h2>Les quatre parcours</h2>
+    <div class="grille-maquette">
+      <div class="carte">
+        <h3>1. Inscriptions</h3>
+        <p>Le parent demande l'inscription de son enfant ; le secrétariat choisit la classe et valide. La capacité est contrôlée.</p>
+        <p><a href="1-inscriptions.html">Ouvrir les maquettes →</a></p>
+      </div>
+      <div class="carte">
+        <h3>2. Saisie des notes</h3>
+        <p>L'enseignant crée une évaluation, saisit les notes de la classe, consulte les moyennes et les bulletins.</p>
+        <p><a href="2-notes.html">Ouvrir les maquettes →</a></p>
+      </div>
+      <div class="carte">
+        <h3>3. Paiements</h3>
+        <p>Le secrétariat enregistre un paiement ; le reçu et le message au parent sont générés. Suivi des impayés et relances.</p>
+        <p><a href="3-paiements.html">Ouvrir les maquettes →</a></p>
+      </div>
+      <div class="carte">
+        <h3>4. Messagerie</h3>
+        <p>Brouillon, envoi, lecture avec historique, masquage dans sa propre boîte. Un message envoyé ne peut plus être modifié.</p>
+        <p><a href="4-messagerie.html">Ouvrir les maquettes →</a></p>
+      </div>
+    </div>
+
+    <h2>Comment lire une maquette</h2>
+    <div class="regles">
+      <strong>Les cadres</strong> représentent l'écran tel qu'il apparaît dans le navigateur (barre d'adresse en haut, menu à gauche).
+      <ul>
+        <li>Les <span class="repere">1</span> rouges sont numérotés ; la légende sous chaque écran explique chacun d'eux.</li>
+        <li>Les zones en <strong>pointillés rouges</strong> montrent un cas d'erreur ; les zones en <strong>pointillés verts</strong> un cas de succès.</li>
+        <li>Chaque parcours indique les <strong>règles</strong> qu'il doit respecter, avec le chapitre du cahier des charges.</li>
+      </ul>
+    </div>
+
+    <h2>Principes de conception</h2>
+    <div class="regles">
+      <ul>
+        <li><strong>Clarté</strong> : une action principale par écran, en bleu ; les actions dangereuses sont en rouge et demandent une confirmation.</li>
+        <li><strong>Français simple</strong> : libellés courts, messages d'erreur qui disent quoi faire.</li>
+        <li><strong>Argent</strong> : montants en dinars tunisiens (TND), avec 3 décimales, alignés à droite.</li>
+        <li><strong>Téléphone</strong> : la mise en page passe sur une colonne ; aucun défilement horizontal.</li>
+        <li><strong>Couleurs d'état</strong> : vert = validé ou payé, orange = en attente ou à justifier, rouge = refusé ou en retard.</li>
+      </ul>
+    </div>
+
+    <h2>Règles visibles dans les écrans</h2>
+    <table class="correspondance">
+      <thead><tr><th>Règle</th><th>Ce qu'elle impose</th><th>Où on la voit</th></tr></thead>
+      <tbody>
+        <tr><td>Capacité de classe</td><td>Une classe complète ne peut plus recevoir d'élève.</td><td>Inscriptions (écran 1.3)</td></tr>
+        <tr><td>Barème</td><td>Une note ne peut pas dépasser le barème de l'évaluation.</td><td>Notes (écran 2.2)</td></tr>
+        <tr><td>Conflit d'horaire</td><td>Une classe, un enseignant ou une salle ne peuvent pas avoir deux cours en même temps.</td><td>Emploi du temps (application)</td></tr>
+        <tr><td>Reçu automatique</td><td>Chaque paiement produit un reçu et un message au parent, tracés dans le journal d'envoi.</td><td>Paiements (écran 3.2)</td></tr>
+        <tr><td>Message envoyé immuable</td><td>Un message envoyé ne peut plus être modifié ni supprimé.</td><td>Messagerie (écran 4.3)</td></tr>
+        <tr><td>Historique de lecture</td><td>Chaque ouverture d'un message est enregistrée.</td><td>Messagerie (écran 4.2)</td></tr>
+        <tr><td>Parent : destinataires</td><td>Un parent n'écrit qu'au personnel de l'école.</td><td>Messagerie (écran 4.3)</td></tr>
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

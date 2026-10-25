@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maquettes — 2. Notes et bulletins</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="maquette.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="haut-maquette">
+    <div class="titre">Parcours 2 — Saisie des notes</div>
+    <nav><a href="index.html">← Sommaire</a></nav>
+  </header>
+
+  <main class="page-maquette">
+    <span class="etiquette-maquette">Maquette non fonctionnelle</span>
+    <h1>Saisie des notes, moyennes et bulletins</h1>
+    <p>L'enseignant crée une évaluation pour une de ses matières, saisit les notes de toute la classe d'un coup,
+       puis consulte les moyennes. Le secrétariat génère ensuite les bulletins PDF.</p>
+
+    <div class="regles">
+      <strong>Règles à respecter</strong>
+      <ul>
+        <li>Un enseignant ne peut noter que les matières qui lui sont affectées dans la classe.</li>
+        <li>Une note ne peut pas dépasser le barème de l'évaluation (par exemple 10 pour une dictée sur 10).</li>
+        <li>Seuls les élèves inscrits et validés dans la classe apparaissent dans la feuille de notes.</li>
+        <li>Les notes sont ramenées sur 20 : moyenne de matière, puis moyenne générale pondérée par les coefficients.</li>
+      </ul>
+    </div>
+
+    <!-- ÉCRAN 2.1 -->
+    <h2>Écran 2.1 — Choisir la classe et créer une évaluation</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / notes</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#">Classes et matières</a><a href="#">Emploi du temps</a>
+          <a href="#" class="actif">Notes et bulletins</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Messagerie</a>
+          <div class="pied">Fatma Ben Ali<br /><small>Enseignant</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page">
+            <div><h1>Notes et bulletins</h1><p class="doux">Les notes sont ramenées sur 20 pour calculer les moyennes.</p></div>
+            <div class="actions">
+              <div class="champ" style="min-width:200px"><label>Classe</label><select><option>CP A</option><option>CP B</option></select></div>
+              <div class="champ" style="min-width:150px"><label>Trimestre</label><select><option>1er trimestre</option></select></div>
+            </div>
+          </div>
+          <div class="carte">
+            <h2>Nouvelle évaluation</h2>
+            <div class="ligne-form">
+              <div class="champ"><label>Matière</label><select><option>Arabe</option><option>Mathématiques</option></select>
+                <span class="aide">Seules vos matières sont proposées.</span></div>
+              <div class="champ"><label>Intitulé</label><input value="Dictée n°2" /></div>
+              <div class="champ"><label>Type</label><select><option>Contrôle continu</option><option>Examen trimestriel</option></select></div>
+              <div class="champ"><label>Barème</label><input value="10" /></div>
+              <div class="champ"><label>Date</label><input value="2026-10-26" /></div>
+            </div>
+            <button class="bouton">Créer l'évaluation</button>
+          </div>
+          <div class="carte tableau-wrap">
+            <h2>Évaluations du trimestre</h2>
+            <table>
+              <thead><tr><th>Intitulé</th><th>Matière</th><th>Type</th><th>Date</th><th class="droite">Barème</th><th></th></tr></thead>
+              <tbody>
+                <tr><td><strong>Dictée n°1</strong></td><td>Arabe</td><td>Contrôle continu</td><td>05/10/2026</td><td class="droite">/ 10</td><td class="droite"><button class="bouton secondaire petit">Saisir les notes</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Choix de la classe et du trimestre : la liste des évaluations se met à jour.</div></li>
+      <li><span class="repere">2</span><div>La liste « Matière » ne contient que les matières affectées à l'enseignant dans cette classe.</div></li>
+      <li><span class="repere">3</span><div>Le barème est proposé à 20 ; il peut être changé (10 pour une dictée).</div></li>
+    </ol>
+
+    <!-- ÉCRAN 2.2 -->
+    <h2>Écran 2.2 — Saisie des notes de la classe (avec une erreur)</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / notes</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#">Classes et matières</a><a href="#">Emploi du temps</a>
+          <a href="#" class="actif">Notes et bulletins</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Messagerie</a>
+          <div class="pied">Fatma Ben Ali<br /><small>Enseignant</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page"><div><h1>Dictée n°1 — saisie</h1><p class="doux">Arabe · CP A · sur 10</p></div></div>
+          <div class="zone-erreur">
+            <div class="alerte erreur">La note dépasse le barème de cette évaluation. Aucune note n'a été enregistrée : corrigez la ligne en rouge.</div>
+          </div>
+          <div class="carte tableau-wrap">
+            <table>
+              <thead><tr><th>Élève</th><th>Note sur 10</th><th>Commentaire</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Salah Youssef</strong><br /><small>M001</small></td><td><input class="note" value="8.5" /></td><td><input value="Bon travail" /></td></tr>
+                <tr><td><strong>Ben Salem Rim</strong><br /><small>M004</small></td><td class="zone-erreur"><input class="note" value="12" style="border-color:var(--danger)" /></td><td><input value="" /></td></tr>
+                <tr><td><strong>Trabelsi Omar</strong><br /><small>M005</small></td><td><input class="note" value="" /></td><td><input value="" /></td></tr>
+              </tbody>
+            </table>
+            <div class="actions" style="margin-top:14px">
+              <button class="bouton succes">Enregistrer toutes les notes</button>
+              <small>Une case vide n'est pas enregistrée.</small>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Message d'erreur précis : il indique la règle non respectée et que rien n'a été enregistré (l'ensemble est annulé).</div></li>
+      <li><span class="repere">2</span><div>La case fautive est encadrée en rouge. La saisie reste sur place : l'enseignant corrige sans tout recommencer.</div></li>
+      <li><span class="repere">3</span><div>Une case vide est ignorée : on peut saisir la classe en plusieurs fois.<small>Contrôle serveur : l'élève doit être inscrit dans la classe.</small></div></li>
+    </ol>
+
+    <!-- ÉCRAN 2.3 -->
+    <h2>Écran 2.3 — Moyennes et bulletins (secrétariat)</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / notes</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#">Inscriptions</a><a href="#">Classes et matières</a><a href="#">Emploi du temps</a>
+          <a href="#" class="actif">Notes et bulletins</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Paiements</a><a href="#">Messagerie</a>
+          <div class="pied">Amel Jebali<br /><small>Secrétariat</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page"><div><h1>Notes et bulletins</h1></div></div>
+          <div class="alerte succes">2 bulletin(s) généré(s).</div>
+          <div class="carte tableau-wrap">
+            <h2>Moyennes du 1er trimestre — CP A</h2>
+            <table>
+              <thead><tr><th>Élève</th><th>Matières notées</th><th class="droite">Moyenne générale</th><th class="droite">Bulletin</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Salah Youssef</strong></td><td>Arabe : 17.00 · Mathématiques : 14.00</td><td class="droite"><strong>15.67</strong></td><td class="droite"><button class="bouton secondaire petit">Voir le PDF</button></td></tr>
+                <tr><td><strong>Trabelsi Omar</strong></td><td>Arabe : 12.00</td><td class="droite"><strong>12.00</strong></td><td class="droite"><button class="bouton secondaire petit">Voir le PDF</button></td></tr>
+              </tbody>
+            </table>
+            <div class="actions" style="margin-top:14px"><button class="bouton">Générer les bulletins de la classe</button></div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Moyenne par matière affichée avec le détail, pour expliquer le calcul aux parents.</div></li>
+      <li><span class="repere">2</span><div>Moyenne générale pondérée : chaque matière compte selon son coefficient (ex. Arabe 5, Mathématiques 4).</div></li>
+      <li><span class="repere">3</span><div>Le bulletin PDF est généré pour toute la classe en un clic, avec confirmation.</div></li>
+    </ol>
+  </main>
+</body>
+</html>

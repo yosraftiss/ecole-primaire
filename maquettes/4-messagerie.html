@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maquettes — 4. Messagerie</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="maquette.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+  <header class="haut-maquette">
+    <div class="titre">Parcours 4 — Messagerie</div>
+    <nav><a href="index.html">← Sommaire</a></nav>
+  </header>
+
+  <main class="page-maquette">
+    <span class="etiquette-maquette">Maquette non fonctionnelle</span>
+    <h1>Messagerie entre l'école et les familles</h1>
+    <p>Un message se rédige d'abord en <strong>brouillon</strong>, puis il est <strong>envoyé</strong>. Une fois envoyé,
+       il ne peut plus être changé : c'est la preuve de ce qui a été dit. Chaque destinataire peut le masquer dans sa boîte,
+       et l'expéditeur sait qui l'a lu.</p>
+
+    <div class="regles">
+      <strong>Règles à respecter</strong>
+      <ul>
+        <li>Un message envoyé est <strong>immuable</strong> : ni modification, ni suppression, même par son auteur.</li>
+        <li>Un brouillon n'est visible que par son auteur, et il peut être modifié ou supprimé.</li>
+        <li>Un parent n'écrit qu'au personnel de l'école (enseignants, secrétariat, direction).</li>
+        <li>Chaque ouverture d'un message est enregistrée (date et personne). Masquer un message ne le supprime pas pour les autres.</li>
+      </ul>
+    </div>
+
+    <!-- ÉCRAN 4.1 -->
+    <h2>Écran 4.1 — Boîte de réception (parent)</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / messagerie</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#">Inscriptions</a><a href="#">Emploi du temps</a><a href="#">Absences</a>
+          <a href="#">Devoirs</a><a href="#">Paiements</a><a href="#" class="actif">Messagerie</a>
+          <div class="pied">Nabil Salah<br /><small>Parent</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page"><div><h1>Messagerie</h1><p class="doux">Échanges entre l'école, les enseignants et les parents.</p></div></div>
+          <div class="onglets">
+            <button class="actif">Boîte de réception</button><button>Messages envoyés</button><button>Nouveau message</button>
+          </div>
+          <div class="carte tableau-wrap">
+            <table>
+              <thead><tr><th>Objet</th><th>De</th><th>Date</th><th></th></tr></thead>
+              <tbody>
+                <tr style="cursor:pointer"><td><strong>Dictée de Youssef</strong></td><td>Fatma Ben Ali</td><td>6 oct. 2026</td><td><span class="badge bleu">Nouveau</span></td></tr>
+                <tr style="cursor:pointer"><td>Reçu de paiement REC-7F3A2C91</td><td>Amel Jebali</td><td>19 oct. 2026</td><td></td></tr>
+                <tr style="cursor:pointer"><td>Sortie scolaire : autorisation à signer</td><td>Karim Hammami</td><td>12 oct. 2026</td><td></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Les messages non lus sont en gras et marqués « Nouveau ».</div></li>
+      <li><span class="repere">2</span><div>Les reçus de paiement arrivent ici automatiquement, avec leur numéro.</div></li>
+      <li><span class="repere">3</span><div>Trois onglets seulement : reçus, envoyés, nouveau. Simple à comprendre pour tous les parents.</div></li>
+    </ol>
+
+    <!-- ÉCRAN 4.2 -->
+    <h2>Écran 4.2 — Lire un message et voir qui l'a lu (enseignant)</h2>
+    <div class="ecran">
+      <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / messagerie</div></div>
+      <div class="app">
+        <nav class="menu">
+          <div class="marque">École primaire</div>
+          <a href="#">Accueil</a><a href="#">Élèves</a><a href="#">Classes et matières</a><a href="#">Emploi du temps</a><a href="#">Notes et bulletins</a>
+          <a href="#">Absences</a><a href="#">Devoirs</a><a href="#" class="actif">Messagerie</a>
+          <div class="pied">Fatma Ben Ali<br /><small>Enseignant</small></div>
+        </nav>
+        <main class="contenu">
+          <div class="entete-page"><div><h1>Messagerie</h1></div></div>
+          <div class="carte">
+            <div class="entete-page" style="margin-bottom:8px">
+              <h2 style="margin:0">Dictée de Youssef</h2>
+              <span class="badge vert">Envoyé</span>
+            </div>
+            <small>De Fatma Ben Ali · envoyé le 6 oct. 2026 à 10 h 00 · À : Nabil Salah</small>
+            <p style="margin-top:14px">Bonjour, Youssef a obtenu 8,5 / 10 à la dictée. Bon travail.</p>
+            <div class="actions">
+              <button class="bouton secondaire petit">Retour</button>
+              <button class="bouton secondaire petit">Voir qui a lu</button>
+            </div>
+            <div style="margin-top:14px" class="zone-succes">
+              <h3>Consultations</h3>
+              <ul style="margin:0;padding-left:18px">
+                <li>Nabil Salah — 6 oct. 2026, 18 h 12</li>
+                <li>Nabil Salah — 7 oct. 2026, 08 h 03</li>
+              </ul>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Le bouton « Voir qui a lu » n'apparaît que pour l'expéditeur (et l'administration).</div></li>
+      <li><span class="repere">2</span><div>Historique complet : chaque ouverture est datée et attribuée. Utile en cas de litige.</div></li>
+      <li><span class="repere">3</span><div>Un parent qui reçoit un message voit « Masquer de ma boîte » à la place : seul son affichage change.</div></li>
+    </ol>
+
+    <!-- ÉCRAN 4.3 -->
+    <h2>Écran 4.3 — Rédiger, enregistrer un brouillon, envoyer (parent)</h2>
+    <div class="grille-maquette">
+      <div class="ecran">
+        <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / messagerie</div></div>
+        <div class="app">
+          <nav class="menu">
+            <div class="marque">École primaire</div>
+            <a href="#">Accueil</a><a href="#">Élèves</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Paiements</a><a href="#" class="actif">Messagerie</a>
+            <div class="pied">Nabil Salah<br /><small>Parent</small></div>
+          </nav>
+          <main class="contenu">
+            <div class="entete-page"><div><h1>Messagerie</h1></div></div>
+            <div class="onglets"><button>Boîte de réception</button><button>Messages envoyés</button><button class="actif">Nouveau message</button></div>
+            <div class="carte">
+              <div class="champ">
+                <label>Destinataire</label>
+                <select><option>Fatma Ben Ali (enseignant)</option><option>Karim Hammami (enseignant)</option><option>Amel Jebali (secrétariat)</option></select>
+                <span class="aide">Seul le personnel de l'école est proposé.</span>
+              </div>
+              <div class="champ"><label>Objet</label><input value="Question sur le devoir de lecture" /></div>
+              <div class="champ"><label>Message</label><textarea>Bonjour Madame, Youssef a besoin d'aide pour la lecture du texte page 12. Merci.</textarea></div>
+              <div class="actions">
+                <button class="bouton">Envoyer</button>
+                <button class="bouton secondaire">Enregistrer en brouillon</button>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div class="ecran">
+        <div class="barre-navigateur"><div class="points"><span></span><span></span><span></span></div><div class="url">ecole.tn / messagerie</div></div>
+        <div class="app">
+          <nav class="menu">
+            <div class="marque">École primaire</div>
+            <a href="#">Accueil</a><a href="#">Élèves</a><a href="#">Absences</a><a href="#">Devoirs</a><a href="#">Paiements</a><a href="#" class="actif">Messagerie</a>
+            <div class="pied">Nabil Salah<br /><small>Parent</small></div>
+          </nav>
+          <main class="contenu">
+            <div class="entete-page"><div><h1>Messagerie</h1></div></div>
+            <div class="onglets"><button>Boîte de réception</button><button class="actif">Messages envoyés</button><button>Nouveau message</button></div>
+            <div class="zone-erreur">
+              <div class="alerte attention">Ce message a été envoyé : il ne peut plus être modifié ni supprimé.</div>
+            </div>
+            <div class="carte tableau-wrap">
+              <table>
+                <thead><tr><th>Objet</th><th>À</th><th>Statut</th><th class="droite">Actions</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Question sur le devoir de lecture</strong></td><td>Fatma Ben Ali</td><td><span class="badge vert">Envoyé le 20 oct.</span></td><td class="droite"><small>—</small></td></tr>
+                  <tr><td><strong>Réunion jeudi ?</strong></td><td>Amel Jebali</td><td><span class="badge orange">Brouillon</span></td><td class="droite"><div class="actions" style="justify-content:flex-end"><button class="bouton succes petit">Envoyer</button><button class="bouton danger petit">Supprimer</button></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+    <ol class="legende">
+      <li><span class="repere">1</span><div>Destinataires limités au personnel de l'école : la règle est appliquée dès la liste déroulante et contrôlée par le serveur.</div></li>
+      <li><span class="repere">2</span><div>« Enregistrer en brouillon » garde le message sans l'envoyer ; on peut le relire et le compléter plus tard.</div></li>
+      <li><span class="repere">3</span><div>Un brouillon se supprime encore. Un message envoyé (zone rouge) ne se modifie plus : le message explique pourquoi, sans jargon.</div></li>
+    </ol>
+  </main>
+</body>
+</html>
