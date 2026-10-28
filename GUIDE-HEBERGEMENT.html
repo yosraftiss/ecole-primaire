@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guide d'hébergement — École primaire</title>
+  <style>
+    :root {
+      --texte: #1f1a17;
+      --texte-doux: #6b5d52;
+      --fond: #fbf7f2;
+      --carte: #ffffff;
+      --orange: #f4845f;
+      --orange-fonce: #e8704a;
+      --peche: #fde3d6;
+      --vert: #2e7d3e;
+      --vert-clair: #dff3e3;
+      --alerte: #9a4a00;
+      --alerte-clair: #ffe9c7;
+      --bordure: #eadfd3;
+      --code: #f4efe9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--fond);
+      color: var(--texte);
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+    h1 { font-size: 32px; margin: 0 0 6px; }
+    h2 {
+      font-size: 24px;
+      margin: 40px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--peche);
+    }
+    h3 { font-size: 19px; margin: 0 0 8px; }
+    p { margin: 8px 0; }
+    .sous-titre { color: var(--texte-doux); margin-bottom: 24px; }
+    .carte {
+      background: var(--carte);
+      border: 1px solid var(--bordure);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 10px rgba(60, 40, 20, 0.06);
+    }
+    .etape {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin: 14px 0;
+    }
+    .numero {
+      flex: 0 0 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+    }
+    .etape .contenu { flex: 1; }
+    .attention {
+      background: var(--alerte-clair);
+      border-left: 5px solid var(--alerte);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin: 14px 0;
+    }
+    .ok {
+      background: var(--vert-clair);
+      border-left: 5px solid var(--vert);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin: 14px 0;
+    }
+    .code {
+      position: relative;
+      background: var(--code);
+      border: 1px solid var(--bordure);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 10px 0;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 15px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      padding-right: 110px;
+    }
+    .bouton-copie {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #fff;
+      border: 1px solid var(--bordure-forte, #d9c7b8);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    .bouton-copie:hover { background: var(--peche); }
+    .cases label {
+      display: block;
+      position: relative;
+      padding-left: 40px;
+      margin: 12px 0;
+    }
+    .cases input {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      transform: scale(1.3);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--bordure);
+      vertical-align: top;
+    }
+    th { background: var(--peche); }
+    kbd {
+      background: #fff;
+      border: 1px solid #cbbdb0;
+      border-bottom-width: 3px;
+      border-radius: 6px;
+      padding: 1px 7px;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+    }
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      background: var(--code);
+      padding: 1px 6px;
+      border-radius: 6px;
+      font-size: 15px;
+      overflow-wrap: anywhere;
+      word-break: break-all;
+    }
+    .etape .contenu, .cases label { min-width: 0; }
+    .sommaire a { color: var(--orange-fonce); text-decoration: none; font-weight: 600; }
+    .sommaire a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      h1 { font-size: 26px; }
+      .code { padding-right: 14px; padding-top: 44px; }
+      .bouton-copie { top: 8px; right: 8px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <h1>Guide pas à pas : mettre le site en ligne</h1>
+  <p class="sous-titre">Application « Gestion d'une école primaire » — Yosra Ftiss (G03B, LIG2, ISG Sousse)<br />Version 8</p>
+
+  <div class="carte sommaire">
+    <h3>Sommaire</h3>
+    <p>1. <a href="#partie1">Vérifier ce qui existe déjà</a></p>
+    <p>2. <a href="#partie2">Envoyer la version 8 sur GitHub</a> (c'est l'étape qui corrige le site)</p>
+    <p>3. <a href="#partie3">Vérifier le déploiement sur Render</a></p>
+    <p>4. <a href="#partie4">Tester le site en ligne</a></p>
+    <p>5. <a href="#partie5">En cas de problème</a></p>
+    <p>6. <a href="#partie6">Lancer le projet sur votre PC</a></p>
+    <p>7. <a href="#partie7">Rappels importants</a></p>
+  </div>
+
+  <!-- ============================================================ -->
+  <h2 id="partie1">1. Vérifier ce qui existe déjà</h2>
+  <p>Cochez chaque case. Si une case ne peut pas être cochée, passez à la partie 5.</p>
+  <div class="carte cases">
+    <label><input type="checkbox" /> Un dépôt GitHub nommé <strong>ecole-primaire</strong> existe : <code>https://github.com/yosraftiss/ecole-primaire</code></label>
+    <label><input type="checkbox" /> Une base de données Render nommée <strong>ecole</strong> existe, avec le statut <strong>Available</strong>.</label>
+    <label><input type="checkbox" /> Un service Web Render nommé <strong>ecole-primaire</strong> existe : <code>https://ecole-primaire-p8ce.onrender.com</code></label>
+    <label><input type="checkbox" /> Dans Render, <strong>Settings</strong> puis <strong>Build</strong> : le champ <strong>Build Command</strong> contient la ligne ci-dessous.</label>
+  </div>
+
+  <p><strong>Build Command</strong> (à copier dans Render) :</p>
+  <div class="code" id="cmd-build">npm --prefix client install --include=dev && npm --prefix client run build && npm --prefix server install<button class="bouton-copie" data-cible="cmd-build">Copier</button></div>
+
+  <p><strong>Start Command</strong> (doit aussi être dans Render) :</p>
+  <div class="code" id="cmd-start">npm --prefix server run init-db && npm --prefix server start<button class="bouton-copie" data-cible="cmd-start">Copier</button></div>
+
+  <!-- ============================================================ -->
+  <h2 id="partie2">2. Envoyer la version 8 sur GitHub</h2>
+  <p>Cette étape remplace les anciens fichiers de GitHub par ceux de la version 8. Render se met ensuite à jour tout seul.</p>
+
+  <div class="etape"><div class="numero">1</div><div class="contenu">
+    <h3>Dézipper le fichier</h3>
+    <p>Faites un clic droit sur <strong>ecole-projet-v8-hebergement.zip</strong>, puis choisissez <strong>« Extraire tout »</strong>. Mettez le dossier sur le Bureau.</p>
+    <p>Vous obtenez un dossier <strong>ecole-projet</strong>. Ouvrez-le.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">2</div><div class="contenu">
+    <h3>Ouvrir votre dépôt GitHub</h3>
+    <p>Dans Chrome, allez sur <strong>github.com/yosraftiss/ecole-primaire</strong> (vous devez être connecté).</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">3</div><div class="contenu">
+    <h3>Ouvrir la page d'envoi</h3>
+    <p>Cliquez sur le bouton <strong>« Add file »</strong>, puis sur <strong>« Upload files »</strong>.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">4</div><div class="contenu">
+    <h3>Choisir tous les fichiers de la version 8</h3>
+    <p>Dans la fenêtre du dossier <strong>ecole-projet</strong> (celui du Bureau), cliquez dans un espace vide, puis appuyez sur <kbd>Ctrl</kbd> + <kbd>A</kbd>.</p>
+    <p>Glissez ensuite tous les éléments sélectionnés dans la zone de la page GitHub.</p>
+    <div class="attention"><strong>Attention :</strong> ne glissez pas le dossier <strong>C:\ecole-projet</strong> de votre PC. Il contient votre fichier de secrets <strong>server\.env</strong>, qui ne doit jamais aller sur GitHub.</div>
+  </div></div>
+
+  <div class="etape"><div class="numero">5</div><div class="contenu">
+    <h3>Vérifier la liste</h3>
+    <p>Attendez que la liste apparaisse en entier. Vous devez voir : <strong>client</strong>, <strong>database</strong>, <strong>maquettes</strong>, <strong>server</strong>, <strong>GUIDE-HEBERGEMENT.html</strong>, <strong>README.md</strong> et <strong>.gitignore</strong>.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">6</div><div class="contenu">
+    <h3>Enregistrer l'envoi</h3>
+    <p>Descendez tout en bas de la page. Laissez le texte proposé dans la zone de message, puis cliquez sur le bouton vert <strong>« Commit changes »</strong>.</p>
+    <p>Attendez que la liste des fichiers du dépôt se rafraîchisse.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">7</div><div class="contenu">
+    <h3>Vérifier que le bon fichier est bien sur GitHub</h3>
+    <p>Dans le dépôt, cliquez sur <strong>server</strong>, puis sur <strong>src</strong>, puis sur <strong>index.js</strong>.</p>
+    <p>Appuyez sur <kbd>Ctrl</kbd> + <kbd>F</kbd>, puis tapez <strong>dossierSite</strong>.</p>
+    <div class="ok">Si le texte est trouvé, c'est bon. Si rien n'est trouvé, recommencez l'étape 3.</div>
+  </div></div>
+
+  <!-- ============================================================ -->
+  <h2 id="partie3">3. Vérifier le déploiement sur Render</h2>
+
+  <div class="etape"><div class="numero">1</div><div class="contenu">
+    <h3>Ouvrir la page des déploiements</h3>
+    <p>Allez sur <strong>dashboard.render.com</strong>, cliquez sur <strong>ecole-primaire</strong>, puis sur <strong>Deploys</strong> dans le menu de gauche.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">2</div><div class="contenu">
+    <h3>Attendre le statut « Live »</h3>
+    <p>Après l'envoi sur GitHub, une nouvelle ligne apparaît en haut de la liste. Attendez qu'elle indique <strong>Live</strong> (environ 3 à 5 minutes).</p>
+    <p>Si aucune nouvelle ligne n'apparaît après 5 minutes : cliquez sur <strong>Manual Deploy</strong> (en haut à droite), puis sur <strong>Clear build cache & deploy</strong>.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">3</div><div class="contenu">
+    <h3>Contrôler les journaux</h3>
+    <p>Cliquez sur la ligne du déploiement le plus récent, puis appuyez sur <kbd>Ctrl</kbd> + <kbd>F</kbd> et cherchez :</p>
+    <table>
+      <tr><th>Texte à chercher</th><th>Résultat attendu</th></tr>
+      <tr><td><strong>built in</strong></td><td>Doit être trouvé : le site est construit.</td></tr>
+      <tr><td><strong>Serveur démarré</strong></td><td>Doit être trouvé : le serveur tourne.</td></tr>
+      <tr><td><strong>ATTENTION</strong></td><td>Ne doit <strong>pas</strong> être trouvé.</td></tr>
+    </table>
+  </div></div>
+
+  <!-- ============================================================ -->
+  <h2 id="partie4">4. Tester le site en ligne</h2>
+
+  <div class="etape"><div class="numero">1</div><div class="contenu">
+    <h3>Ouvrir le site</h3>
+    <p>Dans Chrome, tapez <strong>https://ecole-primaire-p8ce.onrender.com</strong>. La première fois, patientez environ une minute.</p>
+    <div class="ok">Vous devez voir la page d'accueil de l'école, avec le bouton <strong>« Se connecter »</strong>.</div>
+  </div></div>
+
+  <div class="etape"><div class="numero">2</div><div class="contenu">
+    <h3>Se connecter</h3>
+    <p>Cliquez sur <strong>« Se connecter »</strong>, puis entrez :</p>
+    <div class="code" id="cmd-identifiants">Email : admin@ecole.tn
+Mot de passe : demo1234<button class="bouton-copie" data-cible="cmd-identifiants">Copier</button></div>
+    <div class="ok">Vous devez arriver sur le <strong>Tableau de bord</strong>.</div>
+  </div></div>
+
+  <!-- ============================================================ -->
+  <h2 id="partie5">5. En cas de problème</h2>
+  <table>
+    <tr><th>Ce que vous voyez</th><th>Ce qu'il faut faire</th></tr>
+    <tr>
+      <td>« Adresse introuvable » sur la page du site</td>
+      <td>La version 8 n'est pas encore sur GitHub, ou le déploiement n'est pas fini. Refaites la partie 2, puis la partie 3.</td>
+    </tr>
+    <tr>
+      <td>Dans les journaux : <strong>ATTENTION : site introuvable</strong></td>
+      <td>La Build Command est incorrecte. Dans Render : <strong>Settings</strong> → <strong>Build</strong> → remplacez la Build Command par celle de la partie 1, puis <strong>Save Changes</strong>. Ensuite : <strong>Deploys</strong> → <strong>Manual Deploy</strong> → <strong>Clear build cache & deploy</strong>.</td>
+    </tr>
+    <tr>
+      <td>Le statut est <strong>Failed</strong> (en rouge)</td>
+      <td>Ouvrez les journaux, copiez les lignes en rouge et envoyez-les pour obtenir de l'aide.</td>
+    </tr>
+    <tr>
+      <td>Dans les journaux : <strong>Échec de l'initialisation</strong></td>
+      <td>Dans Render, menu <strong>Environment</strong> : vérifiez que la variable <strong>DATABASE_URL</strong> est présente.</td>
+    </tr>
+    <tr>
+      <td>La connexion ne fonctionne pas</td>
+      <td>Vérifiez l'email et le mot de passe (demo1234). Dans <strong>Environment</strong>, vérifiez que <strong>JWT_SECRET</strong> est présent.</td>
+    </tr>
+    <tr>
+      <td>La page met longtemps à s'ouvrir</td>
+      <td>C'est normal : le site gratuit se met en veille. La première ouverture prend environ une minute.</td>
+    </tr>
+  </table>
+
+  <!-- ============================================================ -->
+  <h2 id="partie6">6. Lancer le projet sur votre PC</h2>
+  <p>Pour utiliser l'application sur votre ordinateur (sans Internet). PostgreSQL doit être démarré : <kbd>Windows</kbd> + <kbd>R</kbd>, tapez <strong>services.msc</strong>, puis démarrez <strong>postgresql-x64-18</strong> s'il n'est pas en cours d'exécution.</p>
+
+  <div class="etape"><div class="numero">1</div><div class="contenu">
+    <h3>Fenêtre 1 : le serveur</h3>
+    <p>Ouvrez l'invite de commandes (cmd) et tapez :</p>
+    <div class="code" id="cmd-local-1">cd C:\ecole-projet\server
+npm start<button class="bouton-copie" data-cible="cmd-local-1">Copier</button></div>
+    <p>Attendez le message <strong>Serveur démarré : http://localhost:3001</strong>. Laissez la fenêtre ouverte.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">2</div><div class="contenu">
+    <h3>Fenêtre 2 : le site</h3>
+    <p>Ouvrez une deuxième invite de commandes et tapez :</p>
+    <div class="code" id="cmd-local-2">cd C:\ecole-projet\client
+npm run dev<button class="bouton-copie" data-cible="cmd-local-2">Copier</button></div>
+    <p>Attendez la ligne qui contient <strong>http://localhost:5173</strong>. Laissez la fenêtre ouverte.</p>
+  </div></div>
+
+  <div class="etape"><div class="numero">3</div><div class="contenu">
+    <h3>Ouvrir l'application</h3>
+    <p>Dans Chrome, tapez <strong>http://localhost:5173</strong>. Sur votre PC, utilisez cette adresse et non l'adresse Render.</p>
+  </div></div>
+
+  <div class="attention"><strong>Première fois seulement :</strong> si une erreur indique qu'un module manque, tapez <kbd>npm install</kbd> dans le dossier concerné (<strong>server</strong>, puis <strong>client</strong>), puis recommencez l'étape.</div>
+
+  <!-- ============================================================ -->
+  <h2 id="partie7">7. Rappels importants</h2>
+  <div class="carte">
+    <p><strong>Base gratuite Render :</strong> elle expire 30 jours après sa création. Si elle a été créée le 25 octobre 2026, la date d'expiration est vers le <strong>24 novembre 2026</strong>. Après expiration, il y a 14 jours de délai, puis les données sont supprimées. Ne mettez pas de données importantes sans avoir choisi un plan payant.</p>
+    <p><strong>Mots de passe de démonstration :</strong> ils sont publics dès que le site est en ligne. Il faudra les changer avant toute utilisation réelle.</p>
+    <p><strong>Fichier secret :</strong> le fichier <strong>server\.env</strong> ne doit jamais être envoyé sur GitHub. Le fichier <strong>.gitignore</strong> l'empêche.</p>
+    <p><strong>Mises à jour futures :</strong> pour publier une nouvelle version, refaites la partie 2. Render redéploie automatiquement.</p>
+  </div>
+
+</main>
+
+<script>
+  // Boutons « Copier » : copie le texte du bloc, sans le libellé du bouton
+  document.querySelectorAll('.bouton-copie').forEach(function (bouton) {
+    bouton.addEventListener('click', function () {
+      var bloc = document.getElementById(bouton.dataset.cible);
+      var texte = bloc.childNodes[0].textContent.trim();
+      var fin = function () {
+        bouton.textContent = 'Copié !';
+        setTimeout(function () { bouton.textContent = 'Copier'; }, 1500);
+      };
+      // Méthode de secours : copie via une zone de texte temporaire
+      var copieSecours = function () {
+        var zone = document.createElement('textarea');
+        zone.value = texte;
+        zone.setAttribute('readonly', '');
+        zone.style.position = 'fixed';
+        zone.style.opacity = '0';
+        document.body.appendChild(zone);
+        zone.select();
+        try { document.execCommand('copy'); fin(); } catch (erreur) { /* texte sélectionnable à la souris */ }
+        document.body.removeChild(zone);
+      };
+      try {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(texte).then(fin, copieSecours);
+        } else {
+          copieSecours();
+        }
+      } catch (erreur) {
+        copieSecours();
+      }
+    });
+  });
+</script>
+</body>
+</html>

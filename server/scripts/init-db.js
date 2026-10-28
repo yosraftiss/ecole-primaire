@@ -21,14 +21,19 @@ const urlAdmin = new URL(url.toString());
 urlAdmin.pathname = '/postgres';
 
 async function main() {
-  const admin = new pg.Client({ connectionString: urlAdmin.toString() });
-  await admin.connect();
-  const existe = await admin.query('SELECT 1 FROM pg_database WHERE datname = $1', [nomBase]);
-  if (existe.rowCount === 0) {
-    await admin.query(`CREATE DATABASE "${nomBase}"`);
-    console.log(`Base « ${nomBase} » créée.`);
+  // Sur un hébergeur, la base est déjà créée : si la connexion « postgres » est refusée, on continue
+  try {
+    const admin = new pg.Client({ connectionString: urlAdmin.toString() });
+    await admin.connect();
+    const existe = await admin.query('SELECT 1 FROM pg_database WHERE datname = $1', [nomBase]);
+    if (existe.rowCount === 0) {
+      await admin.query(`CREATE DATABASE "${nomBase}"`);
+      console.log(`Base « ${nomBase} » créée.`);
+    }
+    await admin.end();
+  } catch (erreur) {
+    console.log('Création de la base ignorée (la base existe déjà) :', erreur.message);
   }
-  await admin.end();
 
   const client = new pg.Client({ connectionString: url.toString() });
   await client.connect();

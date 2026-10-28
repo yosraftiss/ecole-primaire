@@ -1,5 +1,8 @@
 # Gestion d'une école primaire
 
+> **Pour mettre le site en ligne**, ouvrez le fichier `GUIDE-HEBERGEMENT.html` (double-clic, il s'ouvre dans votre navigateur). Il contient toutes les étapes, pas à pas.
+> **Pour lancer le projet sur votre PC**, la partie « Lancer le projet sur votre PC » du même guide résume les commandes.
+
 Projet individuel de **Yosra Ftiss** (groupe G03B, LIG2, ISG Sousse).
 Basé sur le cahier des charges du Dr Hamdi Hassen (20 octobre 2026).
 
